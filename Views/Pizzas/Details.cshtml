@@ -1,0 +1,44 @@
+﻿@model Pizzashops.Models.Pizzas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            pizzaid
+        </dt>
+
+        <dd>
+            @Model.pizzaid
+        </dd>
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.pizzaname
+        </dd>
+
+        <dt>
+            rate
+        </dt>
+
+        <dd>
+            @Model.rate
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    <a href="/Pizzas/Edit/1">Edit</a> |
+    <a href="/">Back to List</a>
+</p>

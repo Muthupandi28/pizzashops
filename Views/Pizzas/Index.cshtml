@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Pizzashops.Models.Pizzas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<form action="/Pizzas/Index" method="post">
+    <p>
+        Title: <input id="SearchString" name="SearchString" type="text" value="" /> <br /><br />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pizzaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pizzaname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rate)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pizzaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pizzaname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.pizzaid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.pizzaid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.pizzaid })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model Pizzashops.Models.Pizzas
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+<form action="/Pizzas/Create" method="post">
+    <input name="__RequestVerificationToken" type="hidden" value="oJJ21ektDySDhthlrF008DCdGZfg9C-U495eFZNxGE5PTelAIn8uNfMDLZqzZiARPTq946FkLpgDjrMzG5y8qxWR8lzyG_B-tx7zjhsl-_w1" />    <div class="form-horizontal">
+        <h4>Pizza</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="pizzaname">Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="pizzaname" name="pizzaname" type="text" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="pizzaname" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="rate">rate</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field rate must be a number." data-val-required="The rate field is required." id="rate" name="rate" type="number" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="rate" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a href="/">Back to List</a>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

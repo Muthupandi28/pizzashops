@@ -1,0 +1,50 @@
+﻿@model Pizzashops.Models.Pizzas
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form action="/Pizzas/Edit/@Model.pizzaid" method="post">
+    <input name="__RequestVerificationToken" type="hidden" value="PTkJ93ff7u-YbFeww1EVI9JT1I67Itv80KcVClVclMkhCisgTJenc6U2FiCGHoSysHoLKG8hw5oPWZSapiDI33tXreRV_BVkQXh8VwmSxwQ1" />    <div class="form-horizontal">
+        <h4>Pizza</h4>
+        <hr />
+
+        <input data-val="true" data-val-number="The field pizzaid must be a number." data-val-required="The pizzaid field is required." id="pizzaid" name="pizzaid" type="hidden" value=@Model.pizzaid />
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="pizzaname">Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="pizzaname" name="pizzaname" type="text" value=@Model.pizzaname />
+                <span class="field-validation-valid text-danger" data-valmsg-for="pizzaname" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="rate">rate</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field rate must be a number." data-val-required="The rate field is required." id="rate" name="rate" type="number" value=@Model.rate />
+                <span class="field-validation-valid text-danger" data-valmsg-for="rate" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a href="/">Back to List</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+@*console.log("@model");*@
+</script>
