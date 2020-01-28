@@ -18,6 +18,7 @@ namespace Pizzashops
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Pizzas", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
