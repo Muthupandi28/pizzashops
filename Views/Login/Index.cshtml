@@ -1,0 +1,68 @@
+﻿@model  Pizzashops.Models.User
+
+@{ 
+    ViewBag.Title = "Login form";
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Login Form</title>
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td> LOGIN HERE</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(Model => Model.UserName)</td>
+                    <td>@Html.EditorFor(Model => Model.UserName)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(Model => Model.Password)</td>
+                    <td>@Html.EditorFor(Model => Model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label> @Html.DisplayFor(Model => Model.LoginErrorMessage, "", new { @class = "text-danger" })</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="name" value="Login"></td>
+                    <td></td>
+                    <td><input type="reset" name="name" value="clear"></td>
+                </tr>
+            </table>
+        }
+
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

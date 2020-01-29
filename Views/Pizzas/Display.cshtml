@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Display";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <!DOCTYPE html>
@@ -12,13 +16,16 @@
 </head>
 
 <body>
-
+    <div align="right">
+      <button>  <a href="@Url.Action("Logout","Login")">Logout</a></button>
+    </div>
     <div class="jumbotron">
         <h1 align="center">PIZZA SHOP</h1>
         <p align="center">Get Your Delecious Pizzas here </p>
     </div>
+
     <div class="container" align="center">
-        <div class="row" >
+        <div class="row">
             <div class="col-md-4">
                 <img src="~/Images/bbq-pizza-318-1547837614.jpg" style="width:100%">
             </div>
@@ -33,7 +40,7 @@
         <div>
             <p class="lead" align="center">
                 ORDER YOUR PIZZAS HERE<br>
-                <button> @Html.ActionLink("Check here", "Inbox")</button>
+                <button> @Html.ActionLink("Check here", "Index")</button>
             </p>
 
         </div>

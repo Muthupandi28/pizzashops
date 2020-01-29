@@ -1,14 +1,18 @@
 ﻿@{
     ViewBag.Title = "Contact";
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
+    Dubai kuruku santhu<br />
+    Dubai Busstand,Dubai MainRoad,
+    Dubai-98052-6399<br />
+    phone number-425.555.0100
 </address>
 
 <address>

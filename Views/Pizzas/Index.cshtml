@@ -3,8 +3,14 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
-
+    <div align="right">
+      <button>  <a href="@Url.Action("Logout","Login")">Logout</a></button>
+    </div>
 <h2>Index</h2>
 
 <p>
