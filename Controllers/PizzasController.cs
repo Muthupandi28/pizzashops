@@ -15,6 +15,12 @@ namespace Pizzashops.Controllers
     {
         private PizzashopsContext db = new PizzashopsContext();
 
+
+        public ActionResult Display()
+        {
+            return View();
+        }
+
         // GET: Pizzas
         public ActionResult Index(string searchString)
         {
@@ -28,7 +34,6 @@ namespace Pizzashops.Controllers
             }
 
             return View(pizzas);
-
 
         }
 

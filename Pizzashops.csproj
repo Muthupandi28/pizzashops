@@ -188,6 +188,7 @@
     <Content Include="Views\Pizzas\Details.cshtml" />
     <Content Include="Views\Pizzas\Edit.cshtml" />
     <Content Include="Views\Pizzas\Index.cshtml" />
+    <Content Include="Views\Pizzas\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
