@@ -8,58 +8,88 @@
         Response.Redirect("~/Login/Index");
     }
 }
-    <div align="right">
-      <button>  <a href="@Url.Action("Logout","Login")">Logout</a></button>
-    </div>
-<h2>Index</h2>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<html>
+    <head>
+        <script>
+            $(document).ready(function ()
+            {
+                $("#button").click(function ()
+                {
+                    
+                    $.ajax({
+                        url:"https://localhost:44350/Pizzas/Filter",
+                        contentType: "json",
+                        dataType:"text",
+                        data: {
+                            searchString: "Indian"
+                        },
+                        method: "GET",
+                        success: function (data) {
+                            console.log(data);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                }   
+                );
+            }
+            );
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        </script>
 
-<form action="/Pizzas/Index" method="post">
-    <p>
-        Title: <input id="SearchString" name="SearchString" type="text" value="" /> <br /><br />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.pizzaid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pizzaname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rate)
-        </th>
+    </head>
+    <body>
+        <div align="right">
+            <button>  <a href="@Url.Action("Logout","Login")">Logout</a></button>
+        </div>
+        <h2>Index</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @*<form action="/Pizzas/Filter" method="post">*@
+            <p>
+                Title: <input id="SearchString" name="SearchString" type="text" value="" /> 
+                <input type="submit" value="Filter" id="button"/>
+            </p>
+        @*</form>*@
 
 
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.pizzaid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pizzaname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rate)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pizzaid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pizzaname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.pizzaid }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.pizzaid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.pizzaid })
+                    </td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>
 
 
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.pizzaid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pizzaname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.pizzaid }) |
-                @Html.ActionLink("Details", "Details", new { id = item.pizzaid }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.pizzaid })
-            </td>
-        </tr>
-    }
-
-</table>

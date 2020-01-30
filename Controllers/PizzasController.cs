@@ -22,20 +22,25 @@ namespace Pizzashops.Controllers
         }
 
         // GET: Pizzas
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
             
             var pizzas = from m in db.Pizzas
                          select m;
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                pizzas = pizzas.Where(s => s.pizzaname.Contains(searchString));
-            }
-
             return View(pizzas);
 
         }
+
+        public JsonResult Filter(string searchString)
+        {
+
+            var pizzas = from m in db.Pizzas select m;
+            pizzas = pizzas.Where(s => s.pizzaname.Contains(searchString));
+            return Json(pizzas,JsonRequestBehavior.AllowGet);
+
+        }
+
 
         // GET: Pizzas/Details/5
         public ActionResult Details(int? id)
